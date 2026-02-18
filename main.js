@@ -220,3 +220,141 @@ class LottoGenerator extends HTMLElement {
 }
 
 customElements.define('lotto-generator', LottoGenerator);
+
+class AffiliateForm extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          display: block;
+          width: 100%;
+          margin-top: 2rem;
+        }
+
+        .card {
+          background: var(--card-bg);
+          border-radius: 24px;
+          padding: 2.5rem;
+          box-shadow: 
+            0 10px 25px var(--shadow-color),
+            0 20px 48px var(--shadow-color);
+          transition: background-color 0.3s ease;
+        }
+
+        h2 {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 1.5rem;
+          text-align: center;
+          letter-spacing: -0.01em;
+        }
+
+        .form-group {
+          margin-bottom: 1.25rem;
+          text-align: left;
+        }
+
+        label {
+          display: block;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          margin-bottom: 0.5rem;
+          padding-left: 4px;
+        }
+
+        input, textarea {
+          width: 100%;
+          padding: 0.875rem 1rem;
+          border-radius: 14px;
+          border: 1px solid oklch(0.8 0.02 240 / 0.3);
+          background-color: var(--bg-color);
+          color: var(--text-primary);
+          font-family: inherit;
+          font-size: 1rem;
+          transition: all 0.2s ease;
+          box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+          outline: none;
+          border-color: var(--accent-color);
+          box-shadow: 0 0 0 4px oklch(0.6 0.2 250 / 0.1);
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+
+        button {
+          width: 100%;
+          background-color: var(--accent-color);
+          color: white;
+          border: none;
+          padding: 1.125rem;
+          font-size: 1rem;
+          font-weight: 700;
+          border-radius: 14px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          margin-top: 0.5rem;
+          box-shadow: 0 8px 16px oklch(0.6 0.2 250 / 0.2);
+        }
+
+        button:hover {
+          filter: brightness(1.1);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 20px oklch(0.6 0.2 250 / 0.3);
+        }
+
+        button:active {
+          transform: translateY(0);
+        }
+
+        .note {
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+          margin-top: 1.25rem;
+          text-align: center;
+          opacity: 0.8;
+        }
+
+        @media (max-width: 500px) {
+          .card { padding: 1.5rem; }
+        }
+      </style>
+      <div class="card">
+        <h2>제휴 및 서비스 문의</h2>
+        <form action="https://formspree.io/f/mldelwwe" method="POST">
+          <div class="form-group">
+            <label for="name">이름 / 기업명</label>
+            <input type="text" id="name" name="name" placeholder="홍길동" required>
+          </div>
+          <div class="form-group">
+            <label for="email">이메일 주소</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">문의 내용</label>
+            <textarea id="message" name="message" placeholder="문의하실 내용을 입력해주세요." required></textarea>
+          </div>
+          <button type="submit">문의 보내기</button>
+        </form>
+        <p class="note">문의를 보내시면 담당자가 확인 후 답변 드립니다.</p>
+      </div>
+    `;
+  }
+}
+
+customElements.define('affiliate-form', AffiliateForm);
