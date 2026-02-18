@@ -336,7 +336,7 @@ class AffiliateForm extends HTMLElement {
       </style>
       <div class="card">
         <h2>제휴 및 서비스 문의</h2>
-        <form action="https://formspree.io/f/mldelwwe" method="POST">
+        <form action="https://formspree.io/f/xykdpkjl" method="POST">
           <div class="form-group">
             <label for="name">이름 / 기업명</label>
             <input type="text" id="name" name="name" placeholder="홍길동" required>
