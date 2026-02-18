@@ -32,8 +32,9 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  align-items: flex-start; /* 콘텐츠가 길어지면 위에서부터 정렬 */
+  padding: 4rem 1rem;      /* 상하 여유 공간 추가 */
+  overflow-y: auto;        /* 세로 스크롤 활성화 */
   position: relative;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
