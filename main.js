@@ -4,7 +4,9 @@ class LottoGenerator extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.numbers = [];
     this.isGenerating = false;
-    this.theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    this.theme =
+      localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     this.applyTheme();
   }
 
@@ -34,7 +36,7 @@ class LottoGenerator extends HTMLElement {
   generateNumbers() {
     if (this.isGenerating) return;
     this.isGenerating = true;
-    
+
     const newNumbers = [];
     while (newNumbers.length < 6) {
       const num = Math.floor(Math.random() * 45) + 1;
@@ -49,7 +51,7 @@ class LottoGenerator extends HTMLElement {
   renderNumbers() {
     const container = this.shadowRoot.querySelector('.numbers-container');
     container.innerHTML = '';
-    
+
     this.numbers.forEach((num, index) => {
       const ball = document.createElement('div');
       ball.className = 'ball';
@@ -210,9 +212,7 @@ class LottoGenerator extends HTMLElement {
             <span class="theme-icon">${this.theme === 'light' ? '🌙' : '☀️'}</span>
           </button>
         </div>
-        <div class="numbers-container">
-          <!-- Numbers will be rendered here -->
-        </div>
+        <div class="numbers-container"></div>
         <button id="generate">번호 생성하기</button>
       </div>
     `;
